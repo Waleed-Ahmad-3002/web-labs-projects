@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    /* Current issue: logo and nav are stacked vertically */
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-nav ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;
+    margin: 0; /* Removes default user-agent margin for ul */
+    /* Current issue: nav items are stacked vertically */
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-bottom: 5px; /* Just for visual separation in current stacked state */
+}
+
+.main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block; /* Makes the whole area clickable */
+}
+
+.main-nav ul li a:hover {
+    background-color: #555;
+}

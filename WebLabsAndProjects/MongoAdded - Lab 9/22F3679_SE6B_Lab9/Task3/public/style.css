@@ -1,0 +1,13 @@
+body {
+    background-color: black;
+}
+
+#message {
+    margin-bottom: 20px;
+}
+.container{
+    max-width: fit-content;
+    border: 2px solid white;
+opacity: 0.9;
+  background-color: rgb(6, 128, 128);
+}

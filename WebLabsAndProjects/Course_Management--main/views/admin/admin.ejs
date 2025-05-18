@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/public/css/admin.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Dashboard</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>Dashboard
+                </li>
+                <li class="nav-item" data-page="courses">
+                    <span class="nav-icon">📚</span>Courses
+                </li>
+                <li class="nav-item" data-page="students">
+                    <span class="nav-icon">👨‍🎓</span>Students
+                </li>
+                <li class="nav-item logout">
+                    <span class="nav-icon">🚪</span>Logout
+                </li>
+            </ul>
+        </div>
+        <div class="content-area">
+            <div class="header">
+                <h2>Welcome, Admin!</h2>
+                <div class="user-info">
+                    <button class="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div id="dashboard-page" class="content-page">
+                <h3>Dashboard Content</h3>
+            </div>
+            <div id="courses-page" class="content-page hidden">
+                <h3>Courses Content</h3>
+            </div>
+            <div id="students-page" class="content-page hidden">
+                <h3>Students Content</h3>
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/admin.js"></script> <!-- Link to your JS file -->
+</body>
+</html>

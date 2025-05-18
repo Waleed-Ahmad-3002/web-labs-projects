@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Billing System</title>
+    <link rel="stylesheet" href="restaurantbilling.css">
+</head>                                             
+<body>
+    <div class="container">
+        <h1>Calculate Your Bill</h1>
+        <div class="calculator">
+            <input type="number" id="total-bill" placeholder="Total Bill">
+            <input type="number" id="tip-percentage" placeholder="Tip (%)">
+            <div class="people-input">
+                <button id="decrement">-</button>
+                <input type="number" id="people" value="1" min="1">
+                <button id="increment">+</button>
+            </div>
+            <button id="calculate">Calculate</button>
+        </div>
+        <div class="summary">
+            <h2>Summary</h2>
+            <p>Total Bill: <span id="total-bill-display">Rs. 0.00</span></p>
+            <p>Tip: <span id="tip-amount-display">Rs. 0.00</span></p>
+            <p>Tax (5%): <span id="tax-display">Rs. 0.00</span></p>
+            <p>Per Person: <span id="per-person-display">Rs. 0.00</span></p>
+        </div>
+    </div>
+    <script src="restaurantbilling.js"></script>
+</body>
+</html>

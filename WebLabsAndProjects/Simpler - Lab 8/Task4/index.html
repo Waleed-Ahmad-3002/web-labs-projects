@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Delete Product</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Delete a Product</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function fetchProducts() {
+            fetch('http://localhost:4000/api/products')
+                .then(response => response.json())
+                .then(products => {
+                    const tableBody = document.getElementById('productTableBody');
+                    tableBody.innerHTML = '';
+
+                    products.forEach(product => {
+                        tableBody.innerHTML += `
+                            <tr id="row-${product.id}">
+                                <td>${product.id}</td>
+                                <td>${product.product_name}</td>
+                                <td>${product.category}</td>
+                                <td>$${product.price}</td>
+                                <td>
+                                    <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    console.log("Error fetching products:", error);
+                });
+        }
+
+        function deleteProduct(productId) {
+            if (confirm("Are you sure you want to delete this product?")) {
+                fetch(`http://localhost:4000/api/products/${productId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Product deleted successfully!");
+                    document.getElementById(`row-${productId}`).remove();
+                })
+                .catch(error => {
+                    console.log("Error deleting product:", error);
+                });
+            }
+        }
+
+        // Load products when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchProducts();
+        });
+    </script>
+</body>
+
+</html>

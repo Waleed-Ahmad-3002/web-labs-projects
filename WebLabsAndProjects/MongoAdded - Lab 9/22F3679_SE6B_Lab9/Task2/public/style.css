@@ -1,0 +1,10 @@
+body {
+    background-color: #599ee4;
+}
+
+#cancelEdit {
+    display: none;
+}
+.container{
+max-width: fit-content;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="post"></div>
+        <a href="index.html">Back to Home</a>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search)
+        const id = urlParams.get('id')
+        fetch(`/api/blogs/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                const postDiv = document.getElementById('post')
+                postDiv.innerHTML = `<h1>${data.title}</h1><p>by ${data.author}</p><p>${data.content}</p>`
+            })
+    </script>
+</body>
+
+</html>

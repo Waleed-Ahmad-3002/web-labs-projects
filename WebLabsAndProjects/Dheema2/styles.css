@@ -1,0 +1,107 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.page-header {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.product-grid_container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the grid container */
+    padding: 0 15px; /* Some padding on the sides of the container */
+    /* --- CSS Grid styles will go here --- */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    /* Maybe add position: relative if badge styling requires it */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.product-name {
+    font-size: 1.25em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.product-price {
+    font-size: 1.1em;
+    color: #16a085;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.btn-add-to-cart {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #2980b9;
+}
+
+/* Styles for the "Best Seller" badge on featured products */
+.product-card.featured {
+    border-color: #f1c40f; /* Gold border for featured */
+    position: relative; /* To position the badge */
+    grid-column: span 2;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f1c40f;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+
+.page-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+

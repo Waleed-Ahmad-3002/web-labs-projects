@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Product List</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Product List</h2>
+        <button onclick="fetchProducts();" class="btn btn-success">Refresh Products</button>
+        <table class="table table-bordered" style="margin-top: 10px;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function fetchProducts() {
+            fetch('http://localhost:4000/api/products')
+                .then(response => response.json())
+                .then(products => {
+                    const tableBody = document.getElementById('productTableBody');
+                    tableBody.innerHTML = '';
+
+                    products.forEach(product => {
+                        tableBody.innerHTML += `
+                            <tr>
+                                <td>${product.id}</td>
+                                <td>${product.product_name}</td>
+                                <td>${product.category}</td>
+                                <td>Rs.${product.price}</td>
+                            </tr>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    console.log("Error fetching products:", error);
+                });
+        }
+
+        // Load products when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchProducts();
+        });
+    </script>
+</body>
+
+</html>

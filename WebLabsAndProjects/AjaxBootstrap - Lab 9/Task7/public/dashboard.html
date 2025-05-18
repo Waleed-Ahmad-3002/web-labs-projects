@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Dashboard</h1>
+        <div id="user-info"></div>
+        <button id="logout" class="btn btn-secondary mt-3">Logout</button>
+    </div>
+    <script>
+        const user = JSON.parse(localStorage.getItem('user'))
+        if (!user) { window.location.href = 'index.html' }
+        fetch(`/api/user/${user.id}`)
+            .then(res => res.json())
+            .then(data => {
+                const info = document.getElementById('user-info')
+                info.innerHTML = `<p>Name: ${data.name}</p><p>Email: ${data.email}</p><p>Joined: ${data.created_at}</p>`
+            })
+        document.getElementById('logout').addEventListener('click', () => {
+            localStorage.removeItem('user')
+            window.location.href = 'index.html'
+        })
+    </script>
+</body>
+
+</html>

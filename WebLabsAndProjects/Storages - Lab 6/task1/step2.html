@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Step 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Registration Form - Step 2</h1>
+
+    <div class="user-info">
+        <h3>Your Information</h3>
+        <p><strong>Name:</strong> <span id="displayName"></span></p>
+        <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+    </div>
+
+    <form id="step2Form">
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+            <div id="phoneError" class="error">Please enter a valid phone number</div>
+        </div>
+        <button type="button" class="back-btn" id="backBtn">Back</button>
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
+
+    <div id="confirmation" class="confirmation">
+        <h3>Registration Complete!</h3>
+        <p><strong>Name:</strong> <span id="confirmName"></span></p>
+        <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+
+</html>

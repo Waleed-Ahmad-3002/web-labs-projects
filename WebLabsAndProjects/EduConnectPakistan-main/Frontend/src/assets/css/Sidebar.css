@@ -1,0 +1,90 @@
+.tutor-sidebar {
+  position: fixed;
+  top: 60px; /* Matches navbar height */
+  left: 0;
+  height: calc(100vh - 60px); /* Full height minus navbar */
+  width: 250px;
+  background-color: #2563eb; /* Same blue as navbar */
+  border-right: none; /* Removed border to create seamless look */
+  padding: 1rem;
+  z-index: 40;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-menu-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: white;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-menu-link:hover {
+  background-color: #3b82f6; /* Lighter blue on hover */
+}
+
+.sidebar-item-icon {
+  margin-right: 0.75rem;
+  color: white;
+}
+
+.sidebar-item-label {
+  font-weight: 500;
+}
+
+.sidebar-logout {
+  border-top: none; /* Removed border for seamless look */
+  padding-top: 1rem;
+}
+
+.sidebar-logout-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  color: white;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-logout-button:hover {
+  background-color: #3b82f6; /* Lighter blue on hover */
+}
+
+/* Verification item specific styles */
+.sidebar-menu-link.verification-item {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu-link.verification-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-menu-link.verification-item .sidebar-item-icon {
+  color: #fbbf24; /* Yellow color for verification badge */
+}

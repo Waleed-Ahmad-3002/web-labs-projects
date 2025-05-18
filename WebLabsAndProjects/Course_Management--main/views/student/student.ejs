@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/public/css/student.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Student Dashboard</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="schedule">
+                    <span class="nav-icon">📅</span>Schedule
+                </li>
+                <li class="nav-item" data-page="courses">
+                    <span class="nav-icon">📚</span>Courses
+                </li>
+                <li class="nav-item logout">
+                    <span class="nav-icon">🚪</span>Logout
+                </li>
+            </ul>
+        </div>
+        <div class="content-area">
+            <div class="header">
+                <h2>Welcome, Student!</h2>
+                <div class="user-info">
+                    <button class="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div id="schedule-page" class="content-page">
+                <h3>Schedule Content</h3>
+            </div>
+            <div id="courses-page" class="content-page hidden">
+                <h3>Courses Content</h3>
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/student.js"></script> <!-- Link to your JS file -->
+</body>
+</html>

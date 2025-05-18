@@ -1,0 +1,349 @@
+/* TutorReviews.css */
+.tutor-reviews-container {
+    padding: 2rem;
+    max-width: 1200px;
+    height:600px;
+    margin: 0 auto;
+    background-color: #f0f7ff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tutor-reviews-container h2 {
+    margin-bottom: 1.5rem;
+    color: #1e3a8a;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.8rem;
+    animation: fadeInDown 0.8s ease-out;
+  }
+  
+  .tutor-reviews-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    border-radius: 2px;
+    animation: expandWidth 1s ease-out forwards;
+  }
+  
+  .loading-message, .error-message, .no-reviews-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e0edff;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .error-message {
+    color: #dc2626;
+    background-color: #fee2e2;
+    border-left: 5px solid #dc2626;
+  }
+  
+  .reviews-table-container {
+    overflow-x: auto;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
+    border-radius: 10px;
+    animation: slideUp 0.7s ease-out;
+  }
+  
+  .reviews-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .reviews-table th, 
+  .reviews-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    transition: background-color 0.2s ease;
+  }
+  
+  .reviews-table tr {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .reviews-table tr:hover {
+    background-color: #f8faff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .reviews-table th {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .reviews-table th svg {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  .star-display {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star {
+    color: #d1d5db;
+    margin-right: 2px;
+    transition: transform 0.2s ease;
+  }
+  
+  .star-display:hover .star {
+    transform: scale(1.2);
+  }
+  
+  .star.filled {
+    color: #eab308;
+  }
+  
+  .rating-text {
+    margin-left: 8px;
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+  
+  .comment-cell {
+    max-width: 300px;
+  }
+  
+  .comment-preview {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #4b5563;
+  }
+  
+  .no-comment {
+    color: #9ca3af;
+    font-style: italic;
+  }
+  
+  .expand-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3b82f6;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  }
+  
+  .expand-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+  }
+  
+  .expand-button svg {
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+  }
+  
+  .expand-button:hover svg {
+    transform: translateY(2px);
+  }
+  
+  .expanded-row {
+    background-color: #f8faff;
+  }
+  
+  .expanded-content {
+    padding: 1.5rem;
+  }
+  
+  .review-details {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .review-details h3 {
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+    color: #1e3a8a;
+    border-bottom: 2px solid #bfdbfe;
+    padding-bottom: 0.75rem;
+  }
+  
+  .detail-item {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail-item strong {
+    color: #1e3a8a;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  .full-comment {
+    margin-top: 0.5rem;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    background-color: #f0f7ff;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+  }
+  
+  .tutor-reply {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed #e5e7eb;
+  }
+  
+  .tutor-reply h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tutor-reply h4::before {
+    content: '↪';
+    margin-right: 8px;
+    font-size: 1.2rem;
+    color: #3b82f6;
+  }
+  
+  .reply-content {
+    background-color: #e0edff;
+    padding: 1rem;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .reply-content::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #e0edff;
+  }
+  
+  .reply-content p {
+    line-height: 1.6;
+  }
+  
+  .reply-date {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: right;
+  }
+  
+  .no-reply {
+    color: #6b7280;
+    font-style: italic;
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px dashed #d1d5db;
+    text-align: center;
+  }
+  
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes expandWidth {
+    from {
+      width: 0;
+    }
+    to {
+      width: 80px;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .tutor-reviews-container {
+      padding: 1.5rem;
+    }
+    
+    .detail-item {
+      flex-direction: column;
+    }
+    
+    .review-details {
+      padding: 1rem;
+    }
+  }
+  
+  /* Handle row hover states (enhanced) */
+  .reviews-table tbody tr:hover td {
+    background-color: rgba(219, 234, 254, 0.4);
+  }
+  
+  /* Enhanced table header styles */
+  .reviews-table thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+  }
+  
+  .reviews-table thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }

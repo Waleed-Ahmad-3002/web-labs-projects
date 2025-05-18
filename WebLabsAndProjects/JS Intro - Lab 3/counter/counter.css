@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+.counter-container {
+    text-align: center;
+}
+
+#counter {
+    font-size: 4rem;
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#increase { background: #28a745; color: white; }
+#decrease { background: #dc3545; color: white; }
+button:hover { opacity: 0.9; }

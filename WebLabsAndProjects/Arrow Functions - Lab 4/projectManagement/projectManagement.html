@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Management</title>
+  <link rel="stylesheet" href="projectManagement.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Project Management</h1>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search by title">
+      <button id="searchButton">Search</button>
+      <select id="filterStatus">
+        <option value="all">All</option>
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+    <form id="projectForm">
+      <input type="text" id="title" placeholder="Project Title" required>
+      <textarea id="description" placeholder="Project Description" required></textarea>
+      <select id="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+      <button type="submit">Add Project</button>
+    </form>
+    <div id="projectList"></div>
+  </div>
+  <script src="projectManagement.js"></script>
+</body>
+</html>

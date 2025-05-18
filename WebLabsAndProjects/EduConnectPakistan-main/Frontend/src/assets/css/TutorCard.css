@@ -1,0 +1,392 @@
+/* TutorCard.css - FIXED */
+.tutor-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Changed from max-width to width */
+    position: relative;
+  }
+  
+  .tutor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Profile image section - FIXED */
+  .profile-image {
+    position: relative;
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    display: block; /* Ensure display */
+  }
+  
+  .profile-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.3s ease;
+  }
+  
+  .tutor-card:hover .profile-image img {
+    transform: scale(1.05);
+  }
+  
+  .fallback-avatar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f9ff;
+  }
+  
+  .avatar-icon {
+    color: #3b82f6;
+  }
+  
+  /* Wishlist button on image */
+  .wishlist-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 0;
+  }
+  
+  .wishlist-button:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
+  
+  .wishlist-button.wishlisted {
+    background-color: #ffefef;
+    border-color: #fecaca;
+  }
+  
+  .wishlist-button svg {
+    color: #3b82f6;
+    stroke-width: 2px;
+  }
+  
+  .wishlist-button.wishlisted svg {
+    color: #e53e3e;
+  }
+  
+  /* Tutor information section */
+  .tutor-info {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+  }
+  
+  /* Rating */
+  .tutor-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+  
+  .rating-stars {
+    display: flex;
+    align-items: center;
+  }
+  
+  .rating-stars svg {
+    margin-right: 2px;
+  }
+  
+  .star-icon.star-filled {
+    color: #f6ad55;
+    stroke: #ed8936;
+    stroke-width: 1.5px;
+  }
+  
+  .star-icon.star-empty {
+    color: #e2e8f0;
+    stroke: #a0aec0;
+    stroke-width: 1.5px;
+  }
+  
+  .rating-count {
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  /* Subjects - ADDED */
+  .tutor-subjects {
+    font-size: 0.875rem;
+    color: #4b5563;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .subjects-label {
+    font-weight: 500;
+    color: #6b7280;
+  }
+  
+  /* Name and Location */
+  .tutor-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.25rem;
+  }
+  
+  .tutor-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin: 0;
+  }
+  
+  .tutor-location {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Hourly rate */
+  .tutor-rate {
+    font-weight: 600;
+    color: #2563eb;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .rate-unit {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: #6b7280;
+    margin-left: 0.25rem;
+  }
+  
+  /* Teaching preference */
+  .teaching-preference {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .preference-label {
+    font-weight: 500;
+    color: #6b7280;
+  }
+  
+  /* Bio */
+  .tutor-bio {
+    margin-top: 0.25rem;
+  }
+  
+  .tutor-bio p {
+    color: #4b5563;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
+  /* Action Buttons */
+  .tutor-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+  }
+  
+  .view-profile-button,
+  .wishlist-button-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 0.5rem;
+    flex: 1;
+    border: none;
+  }
+  
+  .view-profile-button {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  .view-profile-button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .wishlist-button-text {
+    background-color: #f0f9ff;
+    color: #2563eb;
+    border: 1px solid #dbeafe;
+  }
+  
+  .wishlist-button-text:hover {
+    background-color: #dbeafe;
+  }
+  
+  .wishlist-button-text.wishlisted {
+    background-color: #fff5f5;
+    color: #e53e3e;
+    border-color: #fee2e2;
+  }
+  
+  /* Loading states */
+  .tutor-card-skeleton {
+    height: 380px;
+    background: linear-gradient(90deg, #f0f9ff 25%, #dbeafe 50%, #f0f9ff 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #6b7280;
+  }
+  
+  .tutor-card-error {
+    padding: 1.5rem;
+    background-color: #fee2e2;
+    color: #dc2626;
+    border-radius: 0.75rem;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Loading animation */
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .tutor-actions {
+      flex-direction: column;
+    }
+  }
+  /* Add these to your existing TutorCard.css */
+
+/* Wishlist button (heart icon at the top) */
+.wishlist-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-button:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.wishlist-button.wishlisted {
+  background: rgba(255, 229, 229, 0.9);
+}
+
+/* Wishlist text button in the action section */
+.wishlist-button-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #3b82f6;
+  background: white;
+  color: #3b82f6;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wishlist-button-text:hover {
+  background: #f0f7ff;
+}
+
+.wishlist-button-text.wishlisted {
+  border-color: #e53e3e;
+  color: #e53e3e;
+  background: #fff5f5;
+}
+
+.wishlist-button-text.wishlisted:hover {
+  background: #ffefef;
+}
+
+/* Animation for heart when toggling */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.wishlist-button:active svg,
+.wishlist-button-text:active svg {
+  animation: heartbeat 0.3s ease;
+}
+/* Add these styles to your TutorCard.css file */
+
+.wishlist-button.loading,
+.wishlist-button-text.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.wishlist-button.loading svg,
+.wishlist-button-text.loading svg {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

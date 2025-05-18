@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, black, #cfdef3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .controls input,
+  .controls select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .controls button {
+    padding: 10px;
+    border: none;
+    background: linear-gradient(45deg, black, #2575fc);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .controls button:hover {
+    background: #6a11cb;
+  }
+  
+  form {
+    margin-bottom: 30px;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  form textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(45deg, black, #2575fc);
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  form button:hover {
+    background: linear-gradient(45deg, black, #6a11cb);
+  }
+  
+  #projectList .project {
+    background: #f9f9f9;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    position: relative;
+  }
+  
+  #projectList .project h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+  }
+  
+  #projectList .project p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .project .actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  
+  .project .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #2575fc;
+    margin-left: 5px;
+  }
+  
+  .project .actions button:hover {
+    text-decoration: underline;
+  }
+  

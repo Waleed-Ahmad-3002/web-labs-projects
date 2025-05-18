@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Course Registration System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/searchpage.css">
+    <link rel="stylesheet" href="css/working.css">
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/prereq.css">
+    
+</head>
+<body>
+
+    <video id="video-background" autoplay muted loop>
+        <source src="videos/2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Login Page -->
+ <div id="login-page">
+    <div class="gradient-background">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Course Registration System</h1>
+            </div>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" data-tab="student">Student</div>
+                <div class="login-tab" data-tab="admin">Admin</div>
+            </div>
+            
+            <div class="login-form student-form">
+                <div class="form-group">
+                    <label for="student-id">Roll Number</label>
+                    <input type="text" id="student-id" placeholder="Enter your roll number">
+                </div>
+                
+                <div id="student-error" class="error-message hidden"></div>
+                <button class="login-button" id="student-login-btn">
+                    <span></span><span></span> Login
+                </button>
+            </div>
+            
+            <div class="login-form admin-form hidden">
+                <div class="form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" placeholder="Enter admin username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" placeholder="Enter password">
+                </div>
+                
+                <div id="admin-error" class="error-message hidden"></div>
+                <button class="login-button" id="admin-login-btn">
+                    <span></span><span></span> Login
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- Student Dashboard -->
+<div id="student-dashboard" class="dashboard hidden">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Course Registration</h2>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item active" data-page="schedule">
+                <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
+                <span>My Schedule</span>
+            </li>
+            <li class="nav-item" data-page="search">
+                <span class="nav-icon"><i class="fas fa-search"></i></span>
+                <span>Find Courses</span>
+            </li>
+            <li class="nav-item" data-page="requirements">
+                <span class="nav-icon"><i class="fas fa-clipboard-list"></i></span>
+                <span>Course Requirements</span>
+            </li>
+            <li class="nav-item" data-page="notifications">
+                <span class="nav-icon"><i class="fas fa-bell"></i></span>
+                <span>Notifications</span>
+            </li>
+            <li class="nav-item logout">
+                <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Logout</span>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="content-area">
+        <div class="header">
+            <h2>Student Dashboard</h2>
+            <div class="user-info">
+                <span id="student-name">Student Name</span>
+                <button class="logout-btn">Logout</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- Schedule Page -->
+            <div id="schedule-page" class="content-page">
+                <h2>Weekly Schedule</h2>
+                
+                <div id="schedule-conflicts" class="conflicts-container hidden">
+                    <h3>Schedule Conflicts</h3>
+                    <ul id="conflicts-list" class="conflicts-list"></ul>
+                </div>
+                
+                <div class="schedule-container">
+                    <div class="schedule-grid">
+                        <div class="time-header">Time</div>
+                        <div class="day-header">Monday</div>
+                        <div class="day-header">Tuesday</div>
+                        <div class="day-header">Wednesday</div>
+                        <div class="day-header">Thursday</div>
+                        <div class="day-header">Friday</div>
+                        
+                        <!-- Time slots will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tentative-courses">
+                    <h3>Selected Courses</h3>
+                    <div id="selected-courses-list" class="selected-courses-list">
+                        <p class="no-courses">No courses selected yet. Go to "Find Courses" to add courses to your schedule.</p>
+                    </div>
+                    
+                    <div class="course-actions">
+                        <button id="register-btn" class="register-btn">Register for Selected Courses</button>
+                        <button id="clear-btn" class="clear-btn secondary">Clear Selection</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course Search Page -->
+            <div id="search-page" class="content-page hidden">
+                <h2>Find Courses</h2>
+                
+                <div class="search-filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="department-filter">Department</label>
+                            <select id="department-filter">
+                                <option value="">All Departments</option>
+                                <option value="CS">Computer Science</option>
+                                <option value="SE">Software Engineering</option>
+                                <option value="ENG">Engineering</option>
+                                <option value="AI">AI</option>
+                                <option value="ML">ML</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="level-filter">Course Level</label>
+                            <select id="level-filter">
+                                <option value="">All Levels</option>
+                                <option value="100">100 Level</option>
+                                <option value="200">200 Level</option>
+                                <option value="300">300 Level</option>
+                                <option value="400">400 Level</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="day-filter">Day of Week</label>
+                            <select id="day-filter">
+                                <option value="">Any Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="time-filter">Time of Day</label>
+                            <select id="time-filter">
+                                <option value="">Any Time</option>
+                                <option value="morning">Morning (8AM-12PM)</option>
+                                <option value="afternoon">Afternoon (12PM-5PM)</option>
+                                <option value="evening">Evening (5PM-8PM)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="seats-filter">Available Seats</label>
+                            <select id="seats-filter">
+                                <option value="">Any Availability</option>
+                                <option value="open">Open Seats</option>
+                                <option value="full">Full Courses</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="search-input">Search by Course Name or Code</label>
+                            <input type="text" id="search-input" placeholder="Enter course name or code">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="search-results">
+                    <div class="results-header">
+                        <span id="results-count">0 courses found</span>
+                    </div>
+                    
+                    <div id="course-list" class="course-list"></div>
+                </div>
+            </div>
+            
+            <div id="requirements-page" class="content-page hidden">
+                <h2>Course Requirements</h2>
+                
+                <!-- Add this new section for course statistics -->
+                <div class="course-stats">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+                
+                <div class="requirements-container">
+                    <div class="course-requirements">
+                        <!-- Requirements will be generated by JavaScript -->
+                    </div>
+                    
+                    <div class="prerequisite-tree">
+                        <h3>Prerequisite Tree</h3>
+                        <div id="prerequisite-tree-content"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Notifications Page -->
+            <div id="notifications-page" class="content-page hidden">
+                <h2>My Notifications</h2>
+                
+                <div class="action-bar">
+                    <div class="search-wrapper">
+                        <input type="text" id="notification-search" placeholder="Search notifications...">
+                    </div>
+                    <div class="filter-wrapper">
+                        <select id="notification-status-filter">
+                            <option value="">All Notifications</option>
+                            <option value="unread">Unread</option>
+                            <option value="read">Read</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="notifications-container">
+                    <div id="notifications-list" class="notifications-list">
+                        <!-- Notifications will be loaded dynamically -->
+                        <div class="no-notifications hidden">
+                            <p>You don't have any notifications at this time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="dashboard hidden">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="admin-dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-page="courses">
+                    <span class="nav-icon">📚</span>
+                    <span>Courses</span>
+                </li>
+                <li class="nav-item" data-page="students">
+                    <span class="nav-icon">👨‍🎓</span>
+                    <span>Students</span>
+                </li>
+                <!-- Add this to the nav-menu in the sidebar -->
+        <li class="nav-item" data-page="complaints">
+        <span class="nav-icon">🔔</span>
+        <span>Complaints</span>
+        </li>
+                <li class="nav-item" data-page="reports">
+                    <span class="nav-icon">📝</span>
+                    <span>Reports</span>
+                </li>
+                <li class="nav-item logout">
+                    <span class="nav-icon">🚪</span>
+                    <span>Logout</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="content-area">
+            <div class="header">
+                <h2>Admin Dashboard</h2>
+                <div class="user-info">
+                    <span id="admin-name">Admin Name</span>
+                    <button class="logout-btn">Logout</button>
+                </div>
+            </div>
+            
+            <div class="main-content">
+
+
+
+                <!-- Admin Dashboard Page -->
+                <div id="admin-dashboard-page" class="content-page">
+                    <h2>System Overview</h2>
+                    
+                    <div class="admin-grid">
+                        <div class="admin-card">
+                            <h3>Total Courses <span class="count" id="total-courses">0</span></h3>
+                            <p>Manage all courses in the system</p>
+                            <button class="view-btn" data-page="courses">View Courses</button>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <h3>Registered Students <span class="count" id="total-students">0</span></h3>
+                            <p>View and manage student registrations</p>
+                            <button class="view-btn" data-page="students">View Students</button>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <h3>Full Courses <span class="count" id="full-courses">0</span></h3>
+                            <p>Courses with no available seats</p>
+                            <button class="view-btn" data-page="reports">View Report</button>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <h3>Prerequisite Issues <span class="count" id="prereq-issues">0</span></h3>
+                            <p>Students with unfulfilled prerequisites</p>
+                            <button class="view-btn" data-page="reports">View Report</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Courses Management Page -->
+                <div id="courses-page" class="content-page hidden">
+                    <h2>Course Management</h2>
+                    
+                    <div class="action-bar">
+                        <div class="search-wrapper">
+                            <input type="text" id="admin-course-search" placeholder="Search courses...">
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button id="add-course-btn">Add New Course</button>
+                        </div>
+                    </div>
+                    
+                    <table class="data-table" id="courses-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Course Name</th>
+                                <th>Department</th>
+                                <th>Schedule</th>
+                                <th>Seats</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-tbody">
+                            <!-- Courses will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Students Management Page -->
+<div id="students-page" class="content-page hidden">
+    <h2>Student Management</h2>
+    
+    <div class="action-bar">
+        <div class="search-wrapper">
+            <input type="text" id="admin-student-search" placeholder="Search students...">
+        </div>
+    </div>
+    
+    <table class="data-table" id="students-table">
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Completed Courses</th>
+                <th>Registered Courses</th>
+            </tr>
+        </thead>
+        <tbody id="students-tbody">
+            <!-- Students will be generated by JavaScript -->
+        </tbody>
+    </table>
+</div>
+               <!-- Complaints Management Page -->
+<div id="complaints-page" class="content-page hidden">
+    <h2>Student Complaints</h2>
+    
+    <div class="action-bar">
+        <div class="search-wrapper">
+            <input type="text" id="admin-complaint-search" placeholder="Search complaints...">
+        </div>
+        <!-- Filter wrapper has been removed -->
+    </div>
+    
+    <table class="data-table" id="complaints-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Issue</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="complaints-tbody">
+            <!-- Complaints will be generated by JavaScript -->
+        </tbody>
+    </table>
+</div>
+                <!-- Reports Page -->
+                <div id="reports-page" class="content-page hidden">
+                    <h2>Reports</h2>
+                    
+                    <div class="report-tabs">
+                        <div class="report-tab active" data-report="course-enrollment">Course Enrollment</div>
+                        <div class="report-tab" data-report="available-seats">Available Seats</div>
+                        <div class="report-tab" data-report="prerequisites">Prerequisite Issues</div>
+                    </div>
+                    
+                    <div id="report-content" class="report-content">
+                        <!-- Report content will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- Modals -->
+<div id="course-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title">Add New Course</h3>
+            <button class="close-button">&times;</button>
+        </div>
+        
+        <form id="course-form">
+            <input type="hidden" id="course-id">
+            <div class="form-group">
+                <label for="course-code">Course Code</label>
+                <input type="text" id="course-code" required>
+            </div>
+                <div class="form-group">
+                    <label for="course-name">Course Name</label>
+                    <input type="text" id="course-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-department">Department</label>
+                    <select id="course-department" required>
+                        <option value="CS">Computer Science</option>
+                        <option value="SE">Software Engineering</option>
+                        <option value="ENG">Engineering</option>
+                        <option value="AI">AI</option>
+                        <option value="ML">ML</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-level">Course Level</label>
+                    <select id="course-level" required>
+                        <option value="100">100 Level</option>
+                        <option value="200">200 Level</option>
+                        <option value="300">300 Level</option>
+                        <option value="400">400 Level</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-schedule">Schedule</label>
+                    <input type="text" id="course-schedule" placeholder="e.g., Mon 10AM-12PM" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-seats">Seats Available</label>
+                    <input type="number" id="course-seats" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-prerequisites">Prerequisites</label>
+                    <input type="text" id="course-prerequisites" placeholder="e.g., CS101, MATH201">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-course-btn">Save Course</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!-- Notification Detail Modal -->
+<div id="notification-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="notification-modal-title">Notification Details</h3>
+            <button class="close-button">&times;</button>
+        </div>
+        
+        <div class="notification-details">
+            <input type="hidden" id="notification-id">
+            
+            <div class="notification-date">
+                <span id="notification-date"></span>
+            </div>
+            
+            <div class="notification-message">
+                <p id="notification-message-text"></p>
+            </div>
+            
+            <div class="notification-actions">
+                <button id="mark-read-btn" class="primary-btn">Mark as Read</button>
+                <button class="cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Student Registration Modal -->
+    <div id="student-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="student-modal-title">Manage Student Registration</h3>
+                <button class="close-button">&times;</button>
+            </div>
+
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-roll">Roll Number</label>
+                    <input type="text" id="student-roll" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="student-name">Student Name</label>
+                    <input type="text" id="student-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="student-courses">Registered Courses</label>
+                    <select id="student-courses" multiple>
+                        <!-- Course options will be populated by JavaScript -->
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-student-btn">Save Changes</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Course Modal -->
+    <div id="update-course-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="update-course-title">Update Student Course</h3>
+                <button class="close-button" onclick="hideModal('update-course-modal')">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <p id="update-course-message">Select a new course to replace the current one:</p>
+                <label for="update-course-select">Available Courses:</label>
+                <select id="update-course-select" class="form-control">
+                    <!-- Course options will be populated by JavaScript -->
+                </select>
+                <div class="error-message" id="update-course-error"></div>
+            </div>
+            
+            <div class="form-actions">
+                <button id="update-course-confirm-btn" class="btn btn-primary">Update</button>
+                <button id="update-course-cancel-btn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+        <!-- Confirmation Modal -->
+        <div id="confirmation-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="confirmation-title">Confirm Action</h3>
+                    <button class="close-button">&times;</button>
+                </div>
+    
+                <div class="modal-body">
+                    <p id="confirmation-message">Are you sure you want to perform this action?</p>
+                </div>
+    
+                <div class="modal-actions">
+                    <button id="confirm-btn">Confirm</button>
+                    <button id="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    <!-- Complaint Modal -->
+<div id="complaint-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="complaint-modal-title">Complaint Details</h3>
+            <button class="close-button">&times;</button>
+        </div>
+        
+        <form id="complaint-form">
+            <input type="hidden" id="complaint-id">
+            
+            <div class="form-group">
+                <label for="complaint-student">Student</label>
+                <input type="text" id="complaint-student" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="complaint-issue">Issue</label>
+                <textarea id="complaint-issue" readonly></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="complaint-status">Status</label>
+                <select id="complaint-status">
+                    <option value="open">Open</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                    <option value="closed">Closed</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="complaint-response">Response</label>
+                <textarea id="complaint-response" placeholder="Enter your response..."></textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" id="save-complaint-btn">Save Response</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+        <!-- Scripts -->
+        <script  src="js/auth.js"></script>
+        <script  src="js/common.js"></script>
+        <script  src="js/student.js"></script>
+        <script  src="js/admin.js"></script>
+    </body>
+    </html>

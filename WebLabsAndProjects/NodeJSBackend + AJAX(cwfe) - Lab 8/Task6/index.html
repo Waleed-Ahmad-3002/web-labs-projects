@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email"><b>Email</b></label>
+                <input type="email" id="email" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="password" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <small id="loginFeedback" class="text-danger"></small>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $("#loginForm").submit(function (event) {
+            event.preventDefault();
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            $.ajax({
+                url: "http://localhost:4000/api/auth/login",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ email: email, password: password }),
+                success: function (response) {
+                    $("#loginFeedback").text("Successfully logged in");
+                },
+                error: function () {
+                    $("#loginFeedback").text("Invalid credentials");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

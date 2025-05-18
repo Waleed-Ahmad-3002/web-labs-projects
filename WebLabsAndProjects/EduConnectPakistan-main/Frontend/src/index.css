@@ -1,0 +1,151 @@
+.tutor-dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .tutor-main-content {
+    margin-top: 60px; /* Match navbar height */
+    margin-left: 250px; /* Match sidebar width */
+    padding: 1rem;
+    background-color: #f9fafb; /* Light background for main content */
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Add to your ManageSession.css */
+.reschedule-dialog {
+  max-width: 600px;
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.time-slot {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.time-slot:hover {
+  background-color: #f8fafc;
+}
+
+.time-slot.selected {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.loading-slots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+}
+
+.no-slots-message {
+  color: #64748b;
+  font-style: italic;
+  padding: 8px 0;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+/* Add to your ManageSession.css file */
+.add-session-btn {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.add-session-btn:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.session-actions {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.update-session-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.update-session-btn:hover {
+  background-color: #45a049;
+}
+/* Add these styles to your existing CSS */
+.cancel-session-btn {
+  padding: 8px 16px;
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+}
+
+.cancel-session-btn:hover {
+  background-color: #fecaca;
+}
+
+.session-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Keep all your other existing CSS */
